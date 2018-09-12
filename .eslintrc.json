@@ -1,0 +1,26 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+},
+  "parserOptions": {
+    "ecmaFeatures": {
+        "jsx": true
+    },
+    "sourceType": "module"
+},
+  "extends": [
+    "react-app",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "prettier",
+    "react"
+  ],
+  "rules": {
+    "prettier/prettier": ["error", "fb"],
+    "react/sort-comp": "error"
+  }
+}

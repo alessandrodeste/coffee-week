@@ -1,0 +1,7 @@
+.toolbox {
+    display: block;
+    background: pink;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+}
