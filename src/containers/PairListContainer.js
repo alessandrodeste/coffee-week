@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PairList from '../components/PairList/PairList';
 import Toolbox from '../components/Toolbox/Toolbox';
 import Loader from '../components/Loader/Loader';
@@ -7,12 +7,10 @@ import withPairsGenerator from '../hoc/withPairsGenerator';
 
 class PairListContainer extends Component {
   render() {
-    const { loading, generatePairs, data } = this.props;
+    const {loading, generatePairs, data} = this.props;
 
     if (loading) {
-      return (
-        <Loader />
-      );
+      return <Loader />;
     }
     return (
       <React.Fragment>

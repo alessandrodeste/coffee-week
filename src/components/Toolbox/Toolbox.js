@@ -3,9 +3,9 @@ import Button from '../Button/Button';
 import './Toolbox.css';
 
 const Toolbox = () => (
-    <div className="toolbox">
-        <Button />
-    </div>
+  <div className="toolbox">
+    <Button />
+  </div>
 );
 
 export default Toolbox;
