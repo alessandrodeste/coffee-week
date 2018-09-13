@@ -1,4 +1,11 @@
 .pairList {
   display: flex;
   flex-wrap: wrap;
+  /* margin: 0 16px 24px 0; */
+}
+
+@media (max-width: 900px) {
+  .pairList {
+    display: block;
+  }
 }
