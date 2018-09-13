@@ -1,8 +1,8 @@
 .pairCard {
   position: relative;
-  flex: 1 1 400px;
-  width: 400px;
-  max-width: 500px;
+  flex: 1 1 350px;
+  width: 350px;
+  max-width: 650px;
   height: 250px;
   margin: 16px 16px 8px;
   border: 1px solid #ccc;
