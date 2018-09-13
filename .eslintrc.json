@@ -21,6 +21,7 @@
   ],
   "rules": {
     "prettier/prettier": ["error", "fb"],
-    "react/sort-comp": "error"
+    "react/sort-comp": "error",
+    "react/prop-types": "off"
   }
 }
