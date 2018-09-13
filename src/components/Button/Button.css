@@ -6,7 +6,7 @@
   color: #e0e0e0;
   background-color: #461b0d;
   line-height: 24px;
-  border-radius: 15px;
+  border-radius: 5px;
   font-size: 1.4rem;
 }
 
@@ -15,4 +15,11 @@
   background-color: #e0e0e0;
   border: 1px solid #461b0d;
   cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .btn {
+    min-width: 60px;
+    width: 60px;
+  }
 }

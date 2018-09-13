@@ -16,7 +16,7 @@
   font-size: 1.4rem;
   height: 24px;
   border: none;
-  border-radius: 15px;
+  border-radius: 5px;
   margin-left: 16px;
 }
 .checkbox-label {
@@ -40,6 +40,11 @@
     right: 0;
     left: 0;
     z-index: 2;
+  }
+  .select-box {
+    min-width: 60px;
+    width: 60px;
+    text-align: center;
   }
 }
 

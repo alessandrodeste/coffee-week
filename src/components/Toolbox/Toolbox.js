@@ -12,7 +12,7 @@ const renderSelectBox = (filters, onChangeFilter) => {
   }
   return (
     <select className="select-box" onChange={onChangeFilter}>
-      <option value="">All</option>
+      <option value="">Show All</option>
       {filters.map(filter => (
         <option value={filter} key={filter}>
           {filter}
