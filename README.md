@@ -23,7 +23,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - react prop types
 - animations
-- improve generalise logic for department
 - test unit/int/e2e
 - test ie / polyfill
 - handling the filter on url level (e.g. coffee/ny/engineering)
