@@ -1,7 +1,12 @@
 .toolbox {
   display: block;
-  background: pink;
+  background: #a85638;
   width: 100%;
-  height: 60px;
-  line-height: 60px;
+  height: 56px;
+  line-height: 56px;
+  box-shadow: 0px 0px 4px 1px #461b0d;
+}
+
+@media print {
+  display: none;
 }
