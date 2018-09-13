@@ -25,6 +25,7 @@ export default function withUsers(WrappedComponent) {
           // load data
           axios
             .get(
+              // `https://hbc-frontend-challenge.hbccommon.private.hbc.com/coffee-week/users?department=engineering`,
               `https://hbc-frontend-challenge.hbccommon.private.hbc.com/coffee-week/users`,
             )
             .then(response => {
