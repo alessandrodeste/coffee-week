@@ -1,5 +1,46 @@
+/**
+  Color Palette:
+  Darker: #461b0d
+  Main Dark: #a85638
+  Selected: #d8c5ae
+  Main Clear: #e0e0e0
+  Secondary: #5ff0ef
+
+  Standard space unit: 8px
+
+  Media breakpoints: 900px
+ */
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+@media print {
+  html {
+    font-size: 10px;
+  }
+}
+
 body {
+  font-size: 1.2rem;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  min-width: 320px;
+}
+
+/* Resets */
+input {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: normal;
+  background: none;
+  line-height: 1;
+  box-sizing:border-box;
+}
+
+input:focus {
+  outline: 0;
 }
