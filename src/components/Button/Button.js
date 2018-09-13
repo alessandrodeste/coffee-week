@@ -1,8 +1,10 @@
 import React from 'react';
 import './Button.css';
 
-const Button = (props) => (
-  <input className="btn" type="button" {...props} />
+const Button = ({onClick, value}) => (
+  <span className="btn" onClick={onClick}>
+    {value}
+  </span>
 );
 
 export default Button;

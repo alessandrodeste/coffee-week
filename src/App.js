@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Header from './components/Header/Header';
 import PairListContainer from './containers/PairListContainer';
 import './App.css';

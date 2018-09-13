@@ -1,3 +1,10 @@
 .App {
   text-align: center;
 }
+
+
+@media (max-width: 900px) {
+  .App {
+    margin-bottom: calc(56px + 16px);
+  }
+}

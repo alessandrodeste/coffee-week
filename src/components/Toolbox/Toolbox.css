@@ -7,6 +7,44 @@
   box-shadow: 0px 0px 4px 1px #461b0d;
 }
 
+.select-box {
+  min-width: 150px;
+  width: 150px;
+  color: #e0e0e0;
+  background-color: #461b0d;
+  line-height: 24px;
+  font-size: 1.4rem;
+  height: 24px;
+  border: none;
+  border-radius: 15px;
+  margin-left: 16px;
+}
+.checkbox-label {
+  cursor: pointer;
+  min-width: 150px;
+  width: 150px;
+  line-height: 24px;
+  font-size: 1.4rem;
+  height: 24px;
+  margin-left: 16px;
+}
+
+.checkbox-label input {
+  margin-right: 8px;
+}
+
+@media (max-width: 900px) {
+  .toolbox {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+  }
+}
+
 @media print {
-  display: none;
+  .toolbox {
+    display: none;
+  }
 }
