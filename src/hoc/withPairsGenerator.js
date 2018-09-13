@@ -1,7 +1,8 @@
 import React from 'react';
+import {getUniqueByKey} from '../helpers/utility';
 
 export default function withPairsGenerator(WrappedComponent) {
-  return class extends React.Component {
+  return class WrapperWithPairsGenerator extends React.Component {
     shuffle = a => {
       for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -10,9 +11,8 @@ export default function withPairsGenerator(WrappedComponent) {
       return a;
     };
 
-    getUniqueByKey = (array, key) => [...new Set(array.map(item => item[key]))];
-    getListOfLocations = users => this.getUniqueByKey(users, 'location');
-    getListOfDepartment = users => this.getUniqueByKey(users, 'department');
+    getLocations = users => getUniqueByKey(users, 'location');
+    getDepartment = users => getUniqueByKey(users, 'department');
 
     getPairs = array => {
       const [head] = array;
@@ -41,28 +41,48 @@ export default function withPairsGenerator(WrappedComponent) {
       return getPairsRecursion(array);
     };
 
-    generatePairs = users => {
-      const locations = this.getListOfLocations(users);
-      const departments = this.getListOfDepartment(users);
+    combineLocationsDepartments = (users, fn) => {
+      const locations = this.getLocations(users);
+      const departments = this.getDepartment(users);
 
       // For each combination of location and department,
       // shuffle the people and create the chain of pairs
       return locations.reduce((acc, location) => {
         const departmentsShuffled = departments.reduce((depAcc, department) => {
-          const list = users.filter(
-            u => u.location === location && u.department === department,
-          );
-          const shuffledList = this.shuffle(list);
-          const pairs = this.getPairs(shuffledList);
-          return [...depAcc, ...pairs];
+          return [
+            ...depAcc,
+            ...fn({
+              location,
+              department,
+            }),
+          ];
         }, []);
         return [...acc, ...departmentsShuffled];
       }, []);
     };
 
+    getPairsFromLocationDepartment = users => ({location, department}) => {
+      const list = users.filter(
+        u => u.location === location && u.department === department,
+      );
+      const shuffledList = this.shuffle(list);
+      return this.getPairs(shuffledList);
+    };
+
+    generatePairs = users => {
+      return this.combineLocationsDepartments(
+        users,
+        this.getPairsFromLocationDepartment(users),
+      );
+    };
+
     render() {
       return (
-        <WrappedComponent generatePairs={this.generatePairs} {...this.props} />
+        <WrappedComponent
+          generatePairs={this.generatePairs}
+          combineLocationsDepartments={this.combineLocationsDepartments}
+          {...this.props}
+        />
       );
     }
   };

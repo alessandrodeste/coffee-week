@@ -11,3 +11,7 @@ export const stringToColour = function(str) {
   }
   return colour;
 };
+
+export const getUniqueByKey = (array, key) => [
+  ...new Set(array.map(item => item[key])),
+];
