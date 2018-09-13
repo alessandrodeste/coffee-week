@@ -22,17 +22,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Nice to have / brainstorming
 
 - react prop types
-- store random seeds (local storage?), to handle the shuffle manually instead than on refresh
 - animations
 - improve generalise logic for department
 - test unit/int/e2e
 - test ie / polyfill
-- scope better css in components (emotion.io?)
-- css theme standards (units, breakpoints, colors, fonts, ...)
-- implement aria and accessibility
+- handling the filter on url level (e.g. coffee/ny/engineering)
 - browser specific changes (css, js)
-- custom component for select and checkbox with custom styles
+- css theme standards (units, breakpoints, colors, fonts, ...)
+- extract and refactor constants and configurations
+- store random seeds (on local storage), to handle the shuffle manually instead refreshing the page
 - filter the list server side (how can I know the list of departments/location?)
+- scope better css in components (for example with emotion.io)
+- implement aria and accessibility
+- custom component for select and checkbox with custom styles
 
 ## Thank you
 
