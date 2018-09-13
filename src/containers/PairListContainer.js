@@ -16,17 +16,31 @@ class PairListContainer extends Component {
 
   isEnable = filter => ['ny-engineering', 'dub-engineering'].includes(filter);
 
-  getUserFilter = user => `${user.location}-${user.department}`;
+  getUserFilterId = user => `${user.location}-${user.department}`;
 
-  filterUsers = users =>
-    users.filter(
-      user =>
-        (!this.state.enabledOnly || this.isEnable(this.getUserFilter(user))) &&
-        (!this.state.filter || this.getUserFilter(user) === this.state.filter),
+  filterPairs = pairs =>
+    pairs.filter(
+      pair =>
+        (!this.state.enabledOnly ||
+          this.isEnable(this.getUserFilterId(pair.giver))) &&
+        (!this.state.filter ||
+          this.getUserFilterId(pair.giver) === this.state.filter),
     );
 
-  filterEnableFilters = filters =>
-    filters.filter(filter => !this.state.enabledOnly || this.isEnable(filter));
+  getFilterList = () => {
+    const {combineLocationsDepartments, data} = this.props;
+
+    const filters = combineLocationsDepartments(
+      data.users,
+      ({location, department}) => {
+        return [`${location}-${department}`];
+      },
+    );
+
+    return filters.filter(
+      filter => !this.state.enabledOnly || this.isEnable(filter),
+    );
+  };
 
   onChangeFilter = event => {
     this.setState({filter: event.target.value});
@@ -40,13 +54,7 @@ class PairListContainer extends Component {
   };
 
   render() {
-    const {
-      loading,
-      generatePairs,
-      combineLocationsDepartments,
-      data,
-      error,
-    } = this.props;
+    const {loading, generatePairs, data, error} = this.props;
 
     if (loading) {
       return <Loader />;
@@ -60,22 +68,16 @@ class PairListContainer extends Component {
       );
     }
 
-    const filters = combineLocationsDepartments(
-      data.users,
-      ({location, department}) => {
-        return [`${location}-${department}`];
-      },
-    );
-
     return (
       <React.Fragment>
         <Toolbox
-          filters={this.filterEnableFilters(filters)}
+          filters={this.getFilterList()}
           enabledOnly={this.state.enabledOnly}
           onChangeFilter={this.onChangeFilter}
           onChangeEnabledOnly={this.onChangeEnabledOnly}
         />
-        <PairList pairs={generatePairs(this.filterUsers(data.users))} />
+        <PairList pairs={this.filterPairs(generatePairs(data.users))} />
+        {/* <PairList pairs={generatePairs(this.filterUsers(data.users))} /> */}
       </React.Fragment>
     );
   }

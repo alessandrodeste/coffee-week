@@ -1,16 +1,9 @@
 import React from 'react';
-import {getUniqueByKey} from '../helpers/utility';
+import {getUniqueByKey, shuffleArray} from '../helpers/utility';
+import memoizeOne from 'memoize-one';
 
 export default function withPairsGenerator(WrappedComponent) {
   return class WrapperWithPairsGenerator extends React.Component {
-    shuffle = a => {
-      for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-      }
-      return a;
-    };
-
     getLocations = users => getUniqueByKey(users, 'location');
     getDepartment = users => getUniqueByKey(users, 'department');
 
@@ -41,14 +34,14 @@ export default function withPairsGenerator(WrappedComponent) {
       return getPairsRecursion(array);
     };
 
+    // For each combination of location and department,
+    // execute the given function
     combineLocationsDepartments = (users, fn) => {
       const locations = this.getLocations(users);
       const departments = this.getDepartment(users);
 
-      // For each combination of location and department,
-      // shuffle the people and create the chain of pairs
       return locations.reduce((acc, location) => {
-        const departmentsShuffled = departments.reduce((depAcc, department) => {
+        const departmentsReduced = departments.reduce((depAcc, department) => {
           return [
             ...depAcc,
             ...fn({
@@ -57,15 +50,17 @@ export default function withPairsGenerator(WrappedComponent) {
             }),
           ];
         }, []);
-        return [...acc, ...departmentsShuffled];
+        return [...acc, ...departmentsReduced];
       }, []);
     };
 
+    // shuffle the people and create the chain of pairs
+    // and return an array of pairs
     getPairsFromLocationDepartment = users => ({location, department}) => {
       const list = users.filter(
         u => u.location === location && u.department === department,
       );
-      const shuffledList = this.shuffle(list);
+      const shuffledList = shuffleArray(list);
       return this.getPairs(shuffledList);
     };
 
@@ -79,7 +74,7 @@ export default function withPairsGenerator(WrappedComponent) {
     render() {
       return (
         <WrappedComponent
-          generatePairs={this.generatePairs}
+          generatePairs={memoizeOne(this.generatePairs)}
           combineLocationsDepartments={this.combineLocationsDepartments}
           {...this.props}
         />
