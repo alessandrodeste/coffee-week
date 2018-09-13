@@ -32,6 +32,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - implement aria and accessibility
 - browser specific changes (css, js)
 - custom component for select and checkbox with custom styles
+- filter the list server side (how can I know the list of departments/location?)
 
 ## Thank you
 
