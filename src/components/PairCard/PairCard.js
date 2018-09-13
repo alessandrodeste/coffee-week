@@ -8,7 +8,7 @@ const PairCard = ({giver, receiver}) => {
     return `${first} ${last}`;
   };
   return (
-    <div className="pairCard">
+    <div className="pairCard" title={`${giver.location} - ${giver.department}`}>
       <div className="pairCard-giver">
         <div className="pairCard-motto">
           &ldquo;
@@ -16,7 +16,8 @@ const PairCard = ({giver, receiver}) => {
           &rdquo;
         </div>
         <div className="pairCard-info">
-          {giver.email} / {giver.phone}
+          <a href={`mailto:${giver.email}`}>{giver.email}</a> /{' '}
+          <a href={`tel:${giver.phone}`}>{giver.phone}</a>
         </div>
         <div className="pairCard-name">{getFullName(giver.name)}</div>
       </div>
@@ -29,7 +30,8 @@ const PairCard = ({giver, receiver}) => {
       <div className="pairCard-receiver">
         <div className="pairCard-name">{getFullName(receiver.name)}</div>
         <div className="pairCard-info">
-          {receiver.email} / {receiver.phone}
+          <a href={`mailto:${receiver.email}`}>{receiver.email}</a> /{' '}
+          <a href={`tel:${receiver.phone}`}>{receiver.phone}</a>
         </div>
         <div className="pairCard-motto">
           &ldquo;
@@ -39,6 +41,7 @@ const PairCard = ({giver, receiver}) => {
       </div>
       <div
         className="pairCard-group"
+        title={`${giver.location} - ${giver.department}`}
         style={{
           backgroundColor: stringToColour(giver.location + giver.department),
         }}
