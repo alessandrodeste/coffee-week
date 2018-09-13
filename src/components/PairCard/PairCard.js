@@ -1,5 +1,5 @@
 import React from 'react';
-import {stringToColour} from '../../helpers/utility';
+import {stringToColour} from '../../helpers/utilities';
 import CoffeeBeans from '../../assets/coffee_beans.svg';
 import './PairCard.css';
 

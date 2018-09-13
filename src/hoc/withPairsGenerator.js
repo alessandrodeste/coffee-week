@@ -1,5 +1,5 @@
 import React from 'react';
-import {getUniqueByKey, shuffleArray} from '../helpers/utility';
+import {getUniqueByKey, shuffleArray} from '../helpers/utilities';
 import memoizeOne from 'memoize-one';
 
 export default function withPairsGenerator(WrappedComponent) {
