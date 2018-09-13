@@ -34,6 +34,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - scope better css in components (for example with emotion.io)
 - implement aria and accessibility
 - custom component for select and checkbox with custom styles
+- improve the loader
 
 ## Thank you
 
